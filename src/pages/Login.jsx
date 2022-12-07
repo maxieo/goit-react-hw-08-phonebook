@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet';
-import { LoginForm } from '../redux/auth/operations'
+import { LoginForm } from 'components/LoginForm/LoginForm'; 
 
 export default function Login() {
   return (
