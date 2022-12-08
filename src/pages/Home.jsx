@@ -1,9 +1,11 @@
 import { Title, Container } from "./styles/Home.styles"
 
-export default function Home() { 
+function Home() { 
   return (
     <Container>
       <Title>Welcome to Contacts</Title>
     </Container>
   )
 }
+
+export default Home

@@ -1,5 +1,5 @@
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
-export default function Register() {
+function Register() {
   return (
     <div>
         <title>Registration</title>
@@ -7,3 +7,5 @@ export default function Register() {
     </div>
   );
 }
+
+export default Register
