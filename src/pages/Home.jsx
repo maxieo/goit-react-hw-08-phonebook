@@ -1,7 +1,9 @@
+import { Title, Container } from "./styles/Home.styles"
+
 export default function Home() { 
   return (
-    <div>
-      <h1>Welcome to Phonebook</h1>
-    </div>
+    <Container>
+      <Title>Welcome to Contacts</Title>
+    </Container>
   )
 }
