@@ -10,7 +10,6 @@ export const Label = styled.label`
 `
 
 export const Form = styled.form`
-  width: 320px;
   display: flex;
   flex-direction: column;
   justify-content: center;

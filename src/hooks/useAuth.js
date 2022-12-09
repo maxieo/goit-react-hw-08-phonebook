@@ -7,8 +7,8 @@ export const useAuth = () => {
   const user = useSelector(selectUser)
   
   return {
-    isRefreshing,
     isLoggedIn,
+    isRefreshing,
     user
   }
 }

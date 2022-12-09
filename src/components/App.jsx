@@ -3,7 +3,7 @@ import { Layout } from './Layout';
 import { Route, Routes } from 'react-router-dom';
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
-import { refreshUser } from 'redux/auth/operations';
+import { refreshUser } from '../redux/auth/operations';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { useAuth } from 'hooks/useAuth';
@@ -13,7 +13,7 @@ const RegisterPage = lazy(() => import('../pages/Register'));
 const LogInPage = lazy(() => import('../pages/Login'));
 const ContactsPage = lazy(() => import('../pages/Contacts'));
 
-export default function App() {
+export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
@@ -22,7 +22,7 @@ export default function App() {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <p>Refreshing contacts...</p>
+    <b>Refreshing contacts...</b>
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
