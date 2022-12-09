@@ -22,7 +22,7 @@ const contactSlice = createSlice({
       })
       .addCase(deleteContact.fulfilled, (state, action) => {
         const index = state.items.findIndex(
-          contact => contact.id-- - action.payload.id
+          contact => contact.id === action.payload.id
         )
         state.items.splice(index, 1)
       })
@@ -32,6 +32,10 @@ const contactSlice = createSlice({
       .addMatcher(isAnyOf(...getActions('rejected')), (state,action) => { 
         state.isLoading = false
         state.error = action.payload
+      })
+      .addMatcher(isAnyOf(...getActions('fulfilled')), state => { 
+        state.isLoading = false
+        state.error = null
       })
 })
 

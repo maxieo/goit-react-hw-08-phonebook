@@ -9,14 +9,14 @@ const ContactItem = ({ contact }) => {
     dispatch(deleteContact(contact.id));
   };
   return (
-    <ul>
+    <li>
       <p>
         {contact.name}: {contact.number}
       </p>
       <button type="button" onClick={() => onDelete(contact.id)}>
         Delete Contact
       </button>
-    </ul>
+    </li>
   );
 };
 
