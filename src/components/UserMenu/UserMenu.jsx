@@ -2,6 +2,7 @@ import { Wrapper, UserName } from 'components/ContactForm/ContactForm.styled';
 import { useDispatch } from 'react-redux';
 import { logout } from 'redux/auth/operations';
 import { useAuth } from '../../hooks/useAuth';
+import Button from '@mui/material/Button';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -10,9 +11,9 @@ export const UserMenu = () => {
   return (
     <Wrapper>
       <UserName>Welcome, {user.name}</UserName>
-      <button type="button" onClick={() => dispatch(logout())}>
+      <Button type="button" variant="outlined" onClick={() => dispatch(logout())}>
         Logout
-      </button>
+      </Button>
     </Wrapper>
   );
 };

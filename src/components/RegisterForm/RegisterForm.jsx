@@ -29,7 +29,7 @@ export const RegisterForm = () => {
           label="Username"
           variant="outlined"
           type="text"
-          name="username"
+          name="name"
         />
       </Label>
       <Label>

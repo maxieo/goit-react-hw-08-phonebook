@@ -6,6 +6,7 @@ import { Filter } from 'components/Filter/Filter';
 import { selectError, selectIsLoading } from 'redux/contacts/selectors';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/operations';
+import { ContactsWrapper } from './styles/Contacts.styles';
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -17,9 +18,11 @@ const Contacts = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <h1>Phonebook</h1>
-      <ContactForm />
+    <ContactsWrapper>
+      <div>
+        <h2>Phonebook</h2>
+        <ContactForm />
+      </div>
 
       <div>
         <h2>Contacts</h2>
@@ -27,8 +30,8 @@ const Contacts = () => {
         {isLoading && !error && <p>Loading...</p>}
         <ContactList />
       </div>
-    </>
+    </ContactsWrapper>
   );
 };
 
-export default Contacts
+export default Contacts;
