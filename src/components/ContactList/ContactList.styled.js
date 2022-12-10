@@ -12,5 +12,4 @@ export const ContactListStyle = styled.ul`
   list-style: none;
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 12px;
 `

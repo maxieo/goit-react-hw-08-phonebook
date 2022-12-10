@@ -1,14 +1,14 @@
 import { useAuth } from "hooks/useAuth"
-import Button from '@mui/material/Button';
+import { NavigationLink } from "./Navigation.styled";
 
 export const Navigation = () => {
   const { isLoggedIn } = useAuth()
   return (
     <nav>
-      <Button to ="/">
+      <NavigationLink type="button" to ="/">
         Home
-      </Button>
-      { isLoggedIn && <Button to="/contacts" variant="text">Contacts</Button>}
+      </NavigationLink>
+      { isLoggedIn && <NavigationLink type="button" to="/contacts" variant="text">Contacts</NavigationLink>}
     </nav>
   )
 }
