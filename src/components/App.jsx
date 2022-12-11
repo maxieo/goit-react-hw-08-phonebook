@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { Layout } from './Layout';
 import { Route, Routes } from 'react-router-dom';
 import { useEffect, lazy } from 'react';
@@ -9,6 +9,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { useAuth } from 'hooks/useAuth';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { Switch } from '@mui/material';
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -23,51 +24,53 @@ export const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  const [darkMode, setDarkMode] = useState(false) 
+  const [darkMode, setDarkMode] = useState(false);
 
   const theme = createTheme({
     palette: {
-      mode: darkMode ? "dark" : "light"
+      mode: darkMode ? 'dark' : 'light',
     },
   });
 
   return isRefreshing ? (
     <b>Refreshing contacts...</b>
   ) : (
-      <ThemeProvider theme={theme}>
-        <CssBaseline/>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />} />
-            <Route
-              path="/register"
-              element={
-                <RestrictedRoute
-                  redirectTo="/contacts"
-                  component={<RegisterPage />}
-                />
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <RestrictedRoute
-                  redirectTo="/contacts"
-                  component={<LogInPage />}
-                />
-              }
-            />
-            <Route
-              path="/contacts"
-              element={
-                <PrivateRoute
-                  redirectTo="/login"
-                  component={<ContactsPage />}
-                />
-              }
-            />
-          </Route>
-        </Routes>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Switch
+        onChange={() => {
+          setDarkMode(!darkMode);
+        }}
+      />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<RegisterPage />}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<LogInPage />}
+              />
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+            }
+          />
+        </Route>
+      </Routes>
     </ThemeProvider>
   );
 };
